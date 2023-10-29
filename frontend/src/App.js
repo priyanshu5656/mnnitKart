@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import Navbar from "./components/Navbar"
+import  {Home} from "./components/pages/Home"
+import  {Login} from "./components/pages/Login"
+import  {SignUp} from "./components/pages/SignUp"
+import  {Dash} from "./components/pages/Dash"
+import { Route, Routes } from "react-router-dom";
 import './App.css';
+import { useState } from "react"
+
 
 function App() {
+  const [logIn, setLogIn] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar logIn={logIn} setLogIn={setLogIn}/>
+      <Routes>
+        <Route path= "/" elements= {<Home/>}/>
+        <Route path="/login"  element ={<Login/>}/>
+        <Route path="/signup" element={<SignUp/>}/>
+        <Route path="/dashbourd" element={<Dash/>}/>
+       
+      </Routes>
     </div>
   );
 }
